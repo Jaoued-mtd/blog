@@ -4,8 +4,10 @@ import path from "path";
 import morgan from "morgan";
 import colors from "colors";
 import connectDB from "./config/db.js";
-import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import postRoutes from "./routes/postRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -23,11 +25,24 @@ app.get("/", (req, res) => {
 
 // ROUTES
 app.use("/api/posts", postRoutes);
-
+app.use("/api/users", userRoutes);
+app.use("/api/upload", uploadRoutes);
 // make folder statics
 
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 // ERROR MIDDLEWARE
 app.use(notFound);
