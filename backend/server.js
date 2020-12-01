@@ -19,10 +19,6 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
 // ROUTES
 app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
