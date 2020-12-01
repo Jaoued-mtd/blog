@@ -18,12 +18,12 @@ const protect = asyncHandler(async (req, res, next) => {
     } catch (error) {
       console.error(error);
       res.status(401);
-      throw new Error("Not authorized, token failed");
+      throw new Error("Merci de vous connecter");
     }
   }
   if (!token) {
     res.status(401);
-    throw new Error("Not authorized, no token");
+    throw new Error("Merci de vous connecter");
   }
 });
 
@@ -32,7 +32,7 @@ const admin = asyncHandler(async (req, res, next) => {
     next();
   } else {
     res.status(401);
-    throw new Error("Not authorized as an Admin");
+    throw new Error("L'utilisateur n'est pas un administrateur");
   }
 });
 

@@ -35,7 +35,7 @@ const getPostById = asyncHandler(async (req, res) => {
     res.json(post);
   } else {
     res.status(404);
-    throw new Error("Post not found");
+    throw new Error("Aucun Post");
   }
 });
 
@@ -47,10 +47,10 @@ const deletePost = asyncHandler(async (req, res) => {
 
   if (post) {
     await post.remove();
-    res.json({ message: "Post removed" });
+    res.json({ message: "Post supprimé" });
   } else {
     res.status(404);
-    throw new Error("Post not found");
+    throw new Error("Aucun Post");
   }
 });
 
@@ -59,10 +59,10 @@ const deletePost = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createPost = asyncHandler(async (req, res) => {
   const post = new Post({
-    name: "Sample name",
+    name: "Sample nom",
     user: req.user._id,
     image: "/images/sample.jpg",
-    category: "Sample category",
+    category: "Sample categorie",
     readTime: 0,
     numReviews: 0,
     description: "Sample description",
@@ -92,7 +92,7 @@ const updatePost = asyncHandler(async (req, res) => {
     res.json(updatedPost);
   } else {
     res.status(404);
-    throw new Error("Post not found");
+    throw new Error("Aucun Post");
   }
 });
 
@@ -111,7 +111,7 @@ const createPostReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error("Post already reviewed");
+      throw new Error("Vous avez déjà commenté ce post");
     }
 
     const review = {
@@ -129,10 +129,10 @@ const createPostReview = asyncHandler(async (req, res) => {
       post.reviews.length;
 
     await post.save();
-    res.status(201).json({ message: "Review added" });
+    res.status(201).json({ message: "Commentaire ajouté" });
   } else {
     res.status(404);
-    throw new Error("Post not found");
+    throw new Error("Aucun Post");
   }
 });
 

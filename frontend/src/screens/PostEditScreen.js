@@ -91,7 +91,7 @@ const PostEditScreen = ({ match, history }) => {
   return (
     <Container>
       <Link to='/admin/postlist' className='btn btn-light my-3'>
-        Go Back
+        Retour
       </Link>
       <FormContainer>
         <h1>Modifier Post</h1>
@@ -104,10 +104,10 @@ const PostEditScreen = ({ match, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Titre</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='Enter name'
+                placeholder='Entrez le titre'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
@@ -117,13 +117,13 @@ const PostEditScreen = ({ match, history }) => {
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Enter image url'
+                placeholder="Entrez url de l'image"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
               <Form.File
                 id='image-file'
-                label='Choose File'
+                label='Choisir un fichier'
                 custom
                 onChange={uploadFileHandler}
               ></Form.File>
@@ -134,17 +134,17 @@ const PostEditScreen = ({ match, history }) => {
               <Form.Label>Lecture</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Enter ReadTime'
+                placeholder='Entrez le temps de lecture'
                 value={readTime}
                 onChange={(e) => setReadTime(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='category'>
-              <Form.Label>Category</Form.Label>
+              <Form.Label>Catégorie</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Enter category'
+                placeholder='Entrez la catégorie'
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
@@ -153,15 +153,16 @@ const PostEditScreen = ({ match, history }) => {
             <Form.Group controlId='description'>
               <Form.Label>Description</Form.Label>
               <Form.Control
-                type='text'
-                placeholder='Enter description'
+                as='textarea'
+                rows={10}
+                placeholder='Entrez la descritpion'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Button type='submit' variant='primary'>
-              Update
+              Modifier
             </Button>
           </Form>
         )}

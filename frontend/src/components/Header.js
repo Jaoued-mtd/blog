@@ -2,6 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
+
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 
 import { logout } from "../actions/userActions";
@@ -21,7 +22,7 @@ const Header = () => {
       <Navbar expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>Jaoued Mouetamid</Navbar.Brand>
+            <Navbar.Brand>Jaoued Mouetamid | Blog</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
@@ -30,17 +31,14 @@ const Header = () => {
                 <Nav.Link>Accueil</Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to='/'>
-                <Nav.Link>Portfolio</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/contact'>
+              {/* <LinkContainer to='/contact'>
                 <Nav.Link>Contact</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
 
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item>Profil</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
@@ -49,14 +47,14 @@ const Header = () => {
               ) : (
                 <LinkContainer to='/login'>
                   <Nav.Link>
-                    <i className='fas fa-user'></i> Sign In
+                    <i className='fas fa-user'></i> Connexion
                   </Nav.Link>
                 </LinkContainer>
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/userlist'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
+                    <NavDropdown.Item>Utilisateurs</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/postlist'>
                     <NavDropdown.Item>Posts</NavDropdown.Item>

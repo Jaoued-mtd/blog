@@ -67,10 +67,10 @@ const PostListScreen = ({ history, match }) => {
   };
 
   return (
-    <Container>
+    <Container className='admin-list'>
       <Row className='align-items-center'>
         <Col>
-          <h1>Posts</h1>
+          <h1>GESTION DES POSTS</h1>
         </Col>
         <Col className='text-right'>
           <Button className='my-3' onClick={createPostHandler}>
@@ -92,9 +92,9 @@ const PostListScreen = ({ history, match }) => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>NAME</th>
+                <th>TITRE</th>
                 <th>LECTURE</th>
-                <th>CATEGORY</th>
+                <th>CATEGORIE</th>
 
                 <th></th>
               </tr>

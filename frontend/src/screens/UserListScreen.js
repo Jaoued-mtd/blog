@@ -33,8 +33,8 @@ const UserListScreen = ({ history }) => {
   };
 
   return (
-    <Container>
-      <h1>Users</h1>
+    <Container className='admin-list'>
+      <h1>GESTION DES UTILISATEURS</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -44,9 +44,9 @@ const UserListScreen = ({ history }) => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>NAME</th>
+              <th>NOM</th>
               <th>EMAIL</th>
-              <th>ADMIN</th>
+              <th>ADMINISTATEUR</th>
               <th></th>
             </tr>
           </thead>

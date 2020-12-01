@@ -73,7 +73,9 @@ const PostScreen = ({ history, match }) => {
                   {/* <Col>{post.createdAt}</Col>- */}
                   <Col>Lecture : {post.readTime} minutes </Col>
                 </Row>
-                <p className='mt-4 font-weight-bold'>Jaoued Mouetamid</p>
+                <p className='mt-4 font-weight-bold'>
+                  Auteur : Jaoued Mouetamid
+                </p>
               </Col>
             </Row>
 
@@ -121,12 +123,13 @@ const PostScreen = ({ history, match }) => {
                         type='submit'
                         variant='primary'
                       >
-                        Submit
+                        Envoyer
                       </Button>
                     </Form>
                   ) : (
                     <Message>
-                      Please <Link to='/login'>sign in</Link> to write a review{" "}
+                      Merci de vous <Link to='/login'>connecter</Link> pour
+                      commenter{" "}
                     </Message>
                   )}
                 </ListGroup.Item>

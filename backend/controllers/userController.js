@@ -20,7 +20,7 @@ const authUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401);
-    throw new Error("Invalid email or password");
+    throw new Error("Les identifiants saisis ne sont pas corrects");
   }
 });
 
@@ -34,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (userExists) {
     res.status(400);
-    throw new Error("User already exists");
+    throw new Error("Compte déjà existant");
   }
 
   const user = await User.create({
@@ -53,7 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error("Données utilisateurs invalides");
   }
 });
 
@@ -72,7 +72,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Aucun utilisateur trouvé");
   }
 });
 
@@ -100,7 +100,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Aucun utilisateur trouvé");
   }
 });
 
@@ -120,10 +120,10 @@ const deleteUser = asyncHandler(async (req, res) => {
 
   if (user) {
     await user.remove();
-    res.json({ message: "User removed" });
+    res.json({ message: "Utilisateur supprimé" });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Aucun utilisateur trouvé");
   }
 });
 
@@ -137,7 +137,7 @@ const getUserById = asyncHandler(async (req, res) => {
     res.json(user);
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Aucun utilisateur trouvé");
   }
 });
 
@@ -162,7 +162,7 @@ const updateUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Aucun utilisateur trouvé");
   }
 });
 
